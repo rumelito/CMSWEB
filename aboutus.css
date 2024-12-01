@@ -1,0 +1,313 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    
+}
+
+.about-us-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    display: flex; /* Enables flexbox layout */
+    align-items: center; /* Vertically aligns items */
+    gap: 20px; /* Adds space between image and content */
+    margin-bottom: 50px;
+}
+.about-us-container img {
+    width: 40%; /* Adjusts the width of the image */
+    height: auto;
+    border-radius: 8px; /* Optional: Adds rounded corners to the image */
+    object-fit: cover; /* Ensures the image scales properly */
+}
+.about-us-content {
+    width: 60%; /* Ensures the content takes up remaining space */
+}
+.about-us-container h1 {
+    color: #1e293b;
+    text-align: center;
+}
+.about-us-content h1, .about-us-content p {
+    margin-bottom: 20px;
+}
+.objective-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  display: flex; /* Enables flexbox layout */
+  align-items: center; /* Vertically aligns items */
+  gap: 20px; /* Adds space between image and content */
+  margin-bottom: 50px;
+}
+.objective-container img {
+  width: 40%; /* Adjusts the width of the image */
+  height: auto;
+  border-radius: 8px; /* Optional: Adds rounded corners to the image */
+  object-fit: cover; /* Ensures the image scales properly */
+}
+.objective-content {
+  width: 60%; /* Ensures the content takes up remaining space */
+}
+.objective-container h1 {
+  color: #1e293b;
+  text-align: center;
+}
+.objective-content h1, .about-us-content p {
+  margin-bottom: 20px;
+}
+.objective-container {
+width: 100%;
+max-width: 1400px;
+margin: 30px auto;
+padding: 20px;
+background-color: whitesmoke;
+border-radius: 8px;
+display: flex; /* Enables flexbox layout */
+align-items: center; /* Vertically aligns items */
+gap: 20px; /* Adds space between image and content */
+margin-bottom: 50px;
+margin-top: 5%;
+}
+.objective-container img {
+width: 40%; /* Adjusts the width of the image */
+height: auto;
+border-radius: 8px; /* Optional: Adds rounded corners to the image */
+object-fit: cover; /* Ensures the image scales properly */
+}
+.objective-content {
+width: 60%; /* Ensures the content takes up remaining space */
+}
+.objectives-container h1 {
+color: #1e293b;
+text-align: center;
+}
+.objective-content h1, .about-us-content p {
+margin-bottom: 20px;
+}
+
+    h1 {
+        font-size: 5rem; /* Large and impactful font size */
+        font-weight: bold; /* Strong bold text */
+        text-align: center; /* Center the heading */
+        color: #1fae5b; /* Vibrant green color */
+        text-transform: uppercase; /* Convert text to uppercase for emphasis */
+        letter-spacing: 2px; /* Add space between letters */
+        margin: 20px 0; /* Add vertical spacing */
+        padding: 10px 0; /* Optional padding for better spacing */
+        border-bottom: 3px solid #1fae5b; /* Add an underline for strength */
+      }
+      h2 {
+        font-size: 3rem; /* Large and impactful font size */
+        font-weight: bold; /* Strong bold text */
+        text-align: center; /* Center the heading */
+        color: #1fae5b; /* Vibrant green color */
+        text-transform: uppercase; /* Convert text to uppercase for emphasis */
+        letter-spacing: 2px; /* Add space between letters */
+        margin: 10px 0; /* Add vertical spacing */
+        padding: 10px 0; /* Optional padding for better spacing */
+      
+      }
+
+
+
+p {
+    font-size: 1.1rem; 
+    line-height: 1.5; 
+    color: #333; 
+    margin: 10px 0; 
+    text-align: justify; 
+    font-family: 'Roboto', sans-serif; 
+}
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    
+  }
+.card-container {
+    display: flex;
+  gap: 20px;
+  width: 50%;
+  overflow-y: hidden;
+  overflow-x: auto; 
+  scroll-behavior: smooth; 
+  margin-left: 40px; 
+  height: 40vh;
+  margin-top: 100px;
+  margin-bottom: 80px;
+  }
+ 
+.card {
+ border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1fae5b;
+  padding: 20px;
+  width: 40%;
+  flex-shrink: 0;; 
+height: 30vh;
+margin: 10px;
+  }
+  
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dimmed background */
+    overflow: auto; /* Enable scrolling if necessary */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #1fae5b;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%; /* Adjust the modal width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#modalTitle {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#modalDescription {
+    font-size: 1.20rem;
+    color: black;
+}
+.card-description p span {
+  font-size: 1.20rem;
+  color: white;
+}
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-img-top {
+    width: 90%;
+    height: 70%;
+    border-radius: 200px;
+    margin-left: 15px;
+   
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+   
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+
+  .about-us-footer {
+    background-color: #1fae5b; /* Green background */
+    color: white; /* White text for contrast */
+    text-align: center;
+    padding: 30px 15px; /* Spacing */
+    font-family: 'Roboto', sans-serif; /* Clean font */
+  }
+  
+  .about-us-footer h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .about-us-footer p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .social-links {
+    margin: 20px 0;
+  }
+  
+  .social-links a {
+    color: white;
+    font-size: 1.5rem; /* Icon size */
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #f1c40f; /* Highlight color on hover */
+  }
+  
+  .footer-credit {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8); /* Subtle text color */
+  }
+  
+@media (max-width: 768px) {
+    .team-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-container {
+        grid-template-columns: 1fr;
+    }
+}
