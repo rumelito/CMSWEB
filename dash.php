@@ -18,11 +18,10 @@ $collection = $client->cdmlinkup->events;
 if (!isset($_SESSION['user'])) {
   header("Location: login.php");
   exit();
+  
 }
 
 $user = $_SESSION['user']; 
-
-
 $user = $userCollection->findOne(['email' => $_SESSION['email']]);
 
 // Handle post creation, editing, deletion, and commenting

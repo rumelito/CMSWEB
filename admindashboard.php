@@ -10,7 +10,13 @@ $updates = $client->cdmlinkup->updates;
 $users = $client->cdmlinkup->users;
 $postCollection = $client->cdmlinkup->posts;
 $collection = $client->cdmlinkup->events;
+$admins = $client->cdmlinkup->admins;
 
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+  }
+  
 
 
 if (isset($_POST['add_product'])) {
@@ -37,8 +43,10 @@ if (isset($_POST['add_product'])) {
             'image' => $image
         ]);
         echo "<script>alert('Product added successfully!.'); window.location.href='admindashboard.php';</script>";
+        exit();
     } else {
         echo "<script>alert('Invalid file type. Please upload a valid image.');  window.location.href='admindashboard.php'; </script>";
+        exit();
     }
 } 
  
@@ -59,21 +67,24 @@ if (isset($_POST['add_update'])) {
         'backColor' => $backColor,
         'image' => $image
     ]);
-    echo "<script>alert('Update added successfully!'); window.location.href='';</script>";
+    echo "<script>alert('Update added successfully!'); window.location.href='admindashboard.php';</script>";
+    exit();
 }
 
 // Handle product deletion
 if (isset($_POST['delete_product'])) {
     $productId = $_POST['product_id'];
     $shop->deleteOne(['_id' => new MongoDB\BSON\ObjectId($productId)]);
-    echo "<script>alert('Product deleted successfully!'); window.location.href='';</script>";
+    echo "<script>alert('Product deleted successfully!'); window.location.href='admindashboard.php';</script>";
+    exit();
 }
 
 // Handle update deletion
 if (isset($_POST['delete_update'])) {
     $updateId = $_POST['update_id'];
     $updates->deleteOne(['_id' => new MongoDB\BSON\ObjectId($updateId)]);
-    echo "<script>alert('Update deleted successfully!'); window.location.href='';</script>";
+    echo "<script>alert('Update deleted successfully!'); window.location.href='admindashboard.php';</script>";
+    exit();
 }
 
 // Handle user deletion
@@ -92,11 +103,14 @@ if (isset($_POST['delete_user'])) {
         // If the user was deleted successfully
         if ($deleteUserResult->getDeletedCount() > 0) {
             echo "<script>alert('User and their posts deleted successfully!'); window.location.href='';</script>";
+            exit();
         } else {
             echo "<script>alert('Failed to delete user. Please try again.');</script>";
+            exit();
         }
     } catch (Exception $e) {
         echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
+        
     }
 }
 
@@ -107,7 +121,6 @@ if (isset($_POST['edit_product'])) {
     $product = $shop->findOne(['_id' => new MongoDB\BSON\ObjectId($productId)]);
         $_SESSION['edit_product'] = (array)$product;
         header('Location: editproduct.php');
-       
         exit;
 }
 
@@ -201,7 +214,6 @@ if (isset($_POST['update_product'])) {
         move_uploaded_file($_FILES['image']['tmp_name'], $image);
     }
 
-
     $updateData = [
         'productName' => $productName,
         'price' => (float)$price,
@@ -213,13 +225,13 @@ if (isset($_POST['update_product'])) {
         $updateData['image'] = $image;
     }
 
-
     $shop->updateOne(
         ['_id' => new ObjectId($productId)],
         ['$set' => $updateData]
     );
 
     echo "<script>alert('Product updated successfully!'); window.location.href='admindashboard.php';</script>";
+    exit();
 }
 
 
@@ -252,8 +264,6 @@ if (isset($_POST['update_update'])) {
 
     echo "<script>alert('Update updated successfully!'); window.location.href='admindashboard.php';</script>";
 }
-
-
 
 ?>
 
@@ -814,7 +824,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="login.php">CDM Linkup</a>
+                <a href="logout.php">CDM Linkup</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#" class="nav-link" onclick="showContent('post')">Post</a></li>
