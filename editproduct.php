@@ -66,14 +66,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_product'])) {
             border-radius: 10px;
         }
         h1 {
-    color: #2e8b57; 
+    color: black; 
     font-size: 2em;
     margin-bottom: 15px;
 }
 
 /* Section headers */
 h3 {
-    color: #2e8b57;
+    color: black;
     font-size: 1.5em;
     margin-bottom: 10px;
 }
@@ -81,7 +81,7 @@ h3 {
 /* Label styling */
 label {
     font-size: 1em;
-    color: #555;
+    color: black;
     margin-bottom: 8px;
     display: block;
 }

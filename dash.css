@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
+  
 }
 
 body {
@@ -11,7 +11,8 @@ body {
   .container {
     display: flex;
   }
-  
+ 
+
   aside {
     width: 250px;
     background: linear-gradient(to bottom, #2E8B57, #3CA374);
@@ -202,6 +203,7 @@ aside a:hover {
     margin: 10px 0;
   }
   
+  
   .banner p {
     margin: 5px 0;
   }
@@ -213,45 +215,76 @@ aside a:hover {
     gap: 20px;
     margin-bottom: 50px;
     width: 95%;
+  
+
+  }
+
+  .content-grid1 {
+    display: flex;  
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 15px;
+    width: 95%;
+    
 
     
 
-  }
+  } 
+
+
   
   /* Featured Posts, CdM Shops, and Other Sections Styling */
   .featured-posts{
     background-color: #2E8B57;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 50vh;
+    height: 60vh;
     width: 40%;
     overflow: hidden;
     position: relative;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    align-items: center;
   }
   .featured-posts img {
-    width: 80%;
+    width: 100%;
     height: 100%;
     object-fit:  cover;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-left: 34%;
+    margin-top: 20px;
   }
+  .featured-posts h5 {
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+  .featured-posts p {
+    color: white;
+    font-size: 16px;
+    margin-left: 20px;
+  }
+  
+  
+  
   .cdm-shops {
     background-color: #2E8B57;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 50vh;
-    width: 40%;
+    height: 60vh;
+    width: 65%;
     position: relative;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
   }
   
   .cdm-shops img {
-    width: 90%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
     position: absolute;
     object-fit: cover;
     opacity: 0;
@@ -280,7 +313,7 @@ aside a:hover {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 50vh;
+    height: 60vh;
     width: 40%;
     overflow:hidden;
   }
@@ -289,12 +322,19 @@ aside a:hover {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 50vh;
+    height: 60vh;
     width: 40%;
     overflow:hidden;
   }
   
-  .featured-posts h3,
+  .featured-posts h3{
+    margin-top: 15px;
+    font-size: 30px;
+    color: 
+    white;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
   .cdm-shops h3,
   .cdm-calendar h3,
   .latest-topics h3,
@@ -325,7 +365,7 @@ aside a:hover {
     padding: 10px;
     border-radius: 8px; 
 max-width: 300px;
-    height: 42vh;
+    height: 51vh;
     width: 100%;
     margin: 0 auto;
     overflow-y: auto;
@@ -340,7 +380,7 @@ max-width: 300px;
     padding: 10px;
     border-radius: 8px; 
 max-width: 300px;
-    height: 39vh;
+    height: 47vh;
     width: 100%;
     margin: 0 auto;
     overflow-y: auto;
@@ -450,19 +490,25 @@ div.scroll-container img {
 
 .cdm-shops img {
   width: 90%;
-  height: 70%;
+  height: 80%;
   position: absolute;
   object-fit: cover;
   opacity: 0; 
   transition: opacity 1s ease-in-out;
   border-radius: 5px;
-  padding-left: 20px;
-  margin-top: 20px;
-  margin-left: 1px;
+  padding-left: 30px;
+  margin-top: 25px;
+  margin-left: 24px;
 }
 
 .cdm-shops img.active {
   opacity: 1; 
+}
+.cdm-shops h5 {
+  margin-left: 20px;
+  color: 
+    white;
+    font-size: 16px;
 }
 
 
@@ -472,26 +518,26 @@ div.scroll-container img {
 .cdm-calendar {
   background-color: #2E8B57;
   padding: 15px;
-  height: 50vh;
+  height: 60vh;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   width: 100%;
-  max-width: 250px; 
   margin: 0 auto;
   overflow-y: auto; 
   overflow-x: hidden; 
 }
 
 /* Mini Calendar Inner Styles */
-#calendar-mini {
+#calendar1 {
   width: 100%; 
-  height: 100%; 
+  height: 90%; 
   overflow: hidden; 
   padding: 10px; 
   background-color: #fff; 
   border-radius: 8px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
+
 
 /* Target only the mini calendar toolbar */
 .cdm-calendar .fc-toolbar {
@@ -740,6 +786,7 @@ select {
 .comments-section {
   margin-top: 15px;
   width: 95%;
+
 }
 
 .post-button2 {
@@ -773,10 +820,12 @@ h3 {
 .comments-section h4 {
   font-size: 1.1em;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
 .comments-section p {
   margin: 5px 0;
   padding-left: 15px;
+  overflow: hidden;
 }
 

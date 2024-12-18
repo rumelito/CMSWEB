@@ -223,6 +223,57 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const calendarEl1 = document.getElementById('calendar1');
+  
+  // Initialize the FullCalendar instance
+  const calendar1 = new FullCalendar.Calendar(calendarEl1, {
+    initialView: 'dayGridMonth',
+    events: <?php echo json_encode($events); ?>,
+    editable: true,
+    eventClick: function (info) {
+      console.log("Event clicked:", info.event1); 
+
+      const event1 = info.event1;
+  
+      document.getElementById('eventId').value = event1.id;
+      document.getElementById('eventTitle').value = event1.title;
+      document.getElementById('eventStart').value = event1.start.toISOString().split('T')[0];
+      document.getElementById('eventColor').value = event1.color;
+
+    
+      document.getElementById('eventActionsModal').style.display = 'block';
+    },
+  });
+
+  
+  calendar1.render();
+
+  
+  function refreshCalendarVisibility() {
+    if (calendarEl1.offsetParent !== null) {
+      calendar1.updateSize(); 
+    }
+  }
+
+  
+  const observer1 = new MutationObserver(() => {
+    refreshCalendarVisibility();
+  });
+
+  
+  observer1.observe(calendarEl1.parentElement, { attributes: true, childList: true, subtree: true });
+
+  
+  document.querySelectorAll("aside a").forEach((link) => {
+    link.addEventListener("click", function () {
+      setTimeout(() => refreshCalendarVisibility(), 300); 
+    });
+  });
+});
+
 </script>
 
 <style>
@@ -252,6 +303,7 @@ document.addEventListener('DOMContentLoaded', function () {
   border: 1px solid #a4d6a4;
   font-family: Arial, sans-serif; 
 }
+
 
 /* General grid styling */
 .fc-daygrid-day {
@@ -325,6 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 }
 
+
 .fc-day-today {
   background-color: #d0f0d0; 
   border: 2px solid #5cb85c; 
@@ -385,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 .feed-card h4 {
     font-size: 24px; 
-    color: #1d643b; 
+    color: black; 
     margin-bottom: 12px;
     font-weight: bold;
 }
@@ -393,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /* Description */
 .feed-card .description {
     font-size: 18px; 
-    color: #3d6e57; 
+    color: black; 
     margin-bottom: 16px;
     line-height: 1.7;
 }
@@ -404,6 +457,7 @@ document.addEventListener('DOMContentLoaded', function () {
     border-radius: 10px;
     height: auto;
     margin-top: 12px;
+    
     border: 1px solid #b2d8b2; 
 }
 
@@ -527,8 +581,7 @@ tbody tr:hover {
           <section class="banner">
             <img src="images/cover.png" alt="Banner Image">
           </section>
-        
-          <section class="content-grid">
+          <section class="content-grid1">
             <!-- Featured Posts -->
             <div class="featured-posts">
               <h3 class="card-title">Featured Post</h3>
@@ -553,11 +606,15 @@ tbody tr:hover {
               </div>
               <h5>CHECK AVAILABLE ITEMS IN SHOP</h5>
             </div>
+          </section>
         
+          <section class="content-grid">
             <!-- CdM Calendar -->
             <div class="cdm-calendar">
               <h3>CdM Calendar</h3>
-              <div id="calendar-mini"></div>
+              
+  <div id="calendar1"></div>
+
             </div>
         
             <!-- Latest Topics -->
@@ -568,9 +625,9 @@ tbody tr:hover {
             $allUpdates = $updates->find();
             foreach ($allUpdates as $update) {
                 echo "<div class='feed-card1' style='background-color: " . htmlspecialchars($update['backColor']) . "; '>";
-                echo "<h4>" . $update['title'] . "</h4>";
+                echo "<h4 style='overflow: hidden;'>" . $update['title'] . "</h4>";
                 echo "<p></p>";
-                echo "<p class='description'>&nbsp;&nbsp;&nbsp;" . $update['description'] . "</p>";
+                echo "<p class='description' style='overflow: hidden;'>&nbsp;&nbsp;&nbsp;" . $update['description'] . "</p>";
                 echo "</div>";
             }
             ?>
@@ -604,18 +661,18 @@ tbody tr:hover {
                     <!-- Display Post Content or Edit Form -->
                     <?php if (isset($_POST['edit_id']) && $_POST['edit_id'] == $post['_id']) : ?>
                         <form action="" method="POST">
-                            <textarea name="newContent" rows="4"><?= htmlspecialchars($post['content']) ?></textarea>
+                            <textarea name="newContent" class="post-content" style="overflow: hidden;" rows="4"><?= htmlspecialchars($post['content']) ?></textarea>
                             <input type="hidden" name="edit_id" value="<?= $post['_id'] ?>">
                         </form>
                     <?php else : ?>
-                        <p class="post-content">Comment: <?= htmlspecialchars($post['content']) ?></p>
+                        <p class="post-content" style="overflow: hidden;">Comment: <?= htmlspecialchars($post['content']) ?></p>
                     <?php endif; ?>
 
                     <!-- Comments Section -->
                     <div class="comments-section">
                         <?php if (!empty($post['comments'])) : ?>
                             <?php foreach ($post['comments'] as $comment) : ?>
-                                <p>Comment: <strong><?= htmlspecialchars($comment['name']) ?> </strong> <?= htmlspecialchars($comment['content']) ?></p>
+                                <p style="overflow: hidden;">Comment: <strong><?= htmlspecialchars($comment['name']) ?> </strong> <?= htmlspecialchars($comment['content']) ?></p>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>
@@ -638,8 +695,8 @@ tbody tr:hover {
             $allUpdates = $updates->find();
             foreach ($allUpdates as $update) {
                 echo "<div class='feed-card' style='background-color: " . htmlspecialchars($update['backColor']) . "; '>";
-                echo "<h4>" . $update['title'] . "</h4>";
-                echo "<p class='description'>" . $update['description'] . "</p>";
+                echo "<h4 style='overflow: hidden;'>" . $update['title'] . "</h4>";
+                echo "<p class='description' style='overflow: hidden;'>" . $update['description'] . "</p>";
                 
                 echo "<img src='" . $update['image'] . "' alt='" . $update['title'] . "' />";
                 echo "</div>";
@@ -765,7 +822,7 @@ tbody tr:hover {
 <div class="container2">
     <!-- Freedom Wall Column -->
     <div class="column" style="float: left; width: 100%; ">
-        <h3>Freedom Wall</h3>
+      
         <?php foreach ($posts as $post) : ?>
             <?php if ($post['postType'] === 'freedomWall') : ?>
                 <?php
@@ -774,7 +831,7 @@ tbody tr:hover {
                 ?>
                 <div class="post-container1" id="post_<?= htmlspecialchars((string)$post['_id']) ?>" 
                      style="background-color: <?= htmlspecialchars($post['backgroundColor']) ?>; font-family: <?= htmlspecialchars($post['font']) ?>;">
-                    <div class="user-info2" style="display: flex; align-items: center; position: relative;">
+                    <div class="user-info2" style=" position: relative;">
                         <!-- Profile Picture and Name Wrapper -->
                         <div style="display: flex; align-items: center;">
                             <img src="<?= htmlspecialchars($postUser['profilePicture'] ?? 'uploads/default.jpg'); ?>" 
@@ -801,12 +858,12 @@ tbody tr:hover {
                     <!-- Display Post Content or Edit Form -->
                     <?php if (isset($_POST['edit_id']) && $_POST['edit_id'] == $post['_id']) : ?>
                         <form action="" method="POST">
-                            <textarea name="newContent" rows="4"><?= htmlspecialchars($post['content']) ?></textarea>
+                            <textarea name="newContent" style="overflow: hidden;"><?= htmlspecialchars($post['content']) ?></textarea>
                             <input type="hidden" name="edit_id" value="<?= $post['_id'] ?>">
                             <button type="submit" class="post-button2">Update Post</button>
                         </form>
                     <?php else : ?>
-                        <p class="post-content"><?= htmlspecialchars($post['content']) ?></p>
+                        <p class="post-content" style="overflow: hidden;"><?= htmlspecialchars($post['content']) ?></p>
                     <?php endif; ?>
 
                     <!-- Comments Section -->
@@ -818,7 +875,7 @@ tbody tr:hover {
                             <?php endforeach; ?>
                         <?php endif; ?>
                         <form action="" method="POST">
-                            <textarea class="textarea1" name="commentContent" placeholder="Add a comment" rows="2"></textarea>
+                            <textarea class="textarea1" name="commentContent" placeholder="Add a comment" column="2"></textarea>
                             <input type="hidden" name="post_id" value="<?= $post['_id'] ?>">
                             <button type="submit" class="post-button2">Comment</button>
                         </form>

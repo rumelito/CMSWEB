@@ -475,40 +475,40 @@ input[type="submit"]:hover {
 .feed-card h4 {
     font-size: 1.4em;
     margin: 0 0 10px;
-    color: #333;
+    color: black;
 }
 
 /* Price styling for product */
 .feed-card .price {
     font-size: 1.2em;
     font-weight: bold;
-    color: #2e8b57;
+    color: black;
     margin-bottom: 10px;
 }
 
 /* Description for both products and updates */
 .feed-card .description1 {
     font-size: 1em;
-    color: #555;
+    color: black;
     margin-bottom: 15px;
 }
 .feed-card .description {
     font-size: 1em;
-    color: #555;
+    color: black;
     margin-bottom: 15px;
 }
 
 /* Display available sizes as comma-separated list */
 .feed-card .sizes {
     font-size: 0.9em;
-    color: #555;
+    color: black;
     margin-bottom: 10px;
 }
 
 /* Display stock information for products */
 .feed-card .stock {
     font-size: 0.9em;
-    color: #555;
+    color: black;
     margin-bottom: 10px;
 }
 
@@ -946,7 +946,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     foreach ($products as $product) {
         echo "<div class='feed-card' style='background-color: " . htmlspecialchars($product['backgroundColor']) . "; '>";
-        echo "<h4>Product Name: " . htmlspecialchars($product['productName'] ?? 'Unknown Product') . "</h4>";
+        echo "<h4 style='overflow: hidden;'>Product Name: " . htmlspecialchars($product['productName'] ?? 'Unknown Product') . "</h4>";
 
         $price = $product['price'] ?? 'N/A';
         echo "<p class='description1'>Price: ₱" . htmlspecialchars($price) . "</p>";
@@ -954,9 +954,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
         if (!empty($product['availableSizes'])) {
             $sizes = explode(',', $product['availableSizes']);
-            echo "<p class='sizes'>Available Sizes: " . htmlspecialchars(implode(', ', $sizes)) . "</p>";
+            echo "<p class='sizes' style='overflow: hidden;'>Available Sizes: " . htmlspecialchars(implode(', ', $sizes)) . "</p>";
         } else {
-            echo "<p class='sizes'>Available Sizes: None</p>";
+            echo "<p class='sizes' style='overflow: hidden;'>Available Sizes: None</p>";
         }
 
         // Handle stock
@@ -987,8 +987,8 @@ document.addEventListener('DOMContentLoaded', function() {
             $allUpdates = $updates->find();
             foreach ($allUpdates as $update) {
                 echo "<div class='feed-card' style='background-color: " . htmlspecialchars($update['backColor']) . "; '>";
-                echo "<h4>Title: " . $update['title'] . "</h4>";
-                echo "<p class='description'>Description: " . $update['description'] . "</p>";
+                echo "<h4 style='overflow: hidden;'>Title: " . $update['title'] . "</h4>";
+                echo "<p class='description' style='overflow: hidden;'>Description: " . $update['description'] . "</p>";
                
                 echo "<img src='" . $update['image'] . "' alt='" . $update['title'] . "' />";
                 echo "<form method='POST'>
